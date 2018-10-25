@@ -1,0 +1,40 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.github.rebue.common-pom</groupId>
+		<artifactId>sb-parent</artifactId>
+		<version>1.0.8</version>
+	</parent>
+
+	<groupId>com.github.rebue.prm</groupId>
+	<artifactId>prm</artifactId>
+	<version>1.0.9</version>
+	<packaging>pom</packaging>
+	<description>合作伙伴关系管理微服务</description>
+
+	<modules>
+		<module>prm-api</module>
+		<module>prm-bll</module>
+		<module>prm-gen</module>
+		<module>prm-svr</module>
+	</modules>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.github.rebue.prm</groupId>
+				<artifactId>prm-api</artifactId>
+				<version>1.0.9</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.rebue.prm</groupId>
+				<artifactId>prm-bll</artifactId>
+				<version>1.0.9</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+</project>

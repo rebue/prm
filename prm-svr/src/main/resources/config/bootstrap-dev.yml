@@ -1,0 +1,29 @@
+debug: true
+
+server:
+  port: 20110
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+
+logging:
+  config: classpath:config/log4j2.xml
+  level:
+    root: info
+    rebue: trace
+    com.netflix.discovery: off
+
+spring:
+  rabbitmq:
+      host: 192.168.1.201
+      port: 5672
+      username: guest
+      password: guest
+  datasource:
+    url: jdbc:mysql://192.168.1.201:3306/prm?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    username: root
+    password: root
+
+appid: 1
