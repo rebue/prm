@@ -225,7 +225,7 @@
     from PRM_PARTNER
     <where>
       <if test="partnerName != null and partnerName != ''">
-        and PARTNER_NAME = #{partnerName,jdbcType=VARCHAR}
+        and PARTNER_NAME like '%${partnerName}%'
       </if>
       <if test="companyAddress != null and companyAddress != ''">
         and COMPANY_ADDRESS = #{companyAddress,jdbcType=VARCHAR}

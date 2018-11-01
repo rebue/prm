@@ -20,6 +20,7 @@
 		<module>prm-bll</module>
 		<module>prm-gen</module>
 		<module>prm-svr</module>
+		<module>prm-svr-feign</module>
 	</modules>
 
 	<dependencyManagement>
