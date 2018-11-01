@@ -76,6 +76,14 @@ public class PrmPartnerSvcImpl extends MybatisBaseSvcImpl<PrmPartnerMo, java.lan
 			ro.setMsg("参数错误");
 			return ro;
 		}
+
+		if (_mapper.existByPartnerName(mo.getPartnerName())) {
+			_log.error("添加伙伴时发现该伙伴已存在，操作人id为：{}", mo.getOpId());
+			ro.setResult(ResultDic.FAIL);
+			ro.setMsg("该伙伴已存在");
+			return ro;
+		}
+
 		Long orgId = _idWorker.getId();
 		mo.setId(_idWorker.getId());
 		mo.setOrgId(orgId);
@@ -91,20 +99,24 @@ public class PrmPartnerSvcImpl extends MybatisBaseSvcImpl<PrmPartnerMo, java.lan
 			ro.setMsg("添加出错");
 			return ro;
 		}
+		
 		// 添加组织信息
-		SucOrgMo orgMo = new SucOrgMo();
-		orgMo.setId(orgId);
-		orgMo.setName(mo.getPartnerName());
-		orgMo.setIsEnabled(false);
-		orgMo.setRemark(mo.getRemark());
-		orgMo.setCreateTimestamp(System.currentTimeMillis());
-		_log.info("添加伙伴添加组织信息的参数为：{}", orgMo);
-		SucOrgRo orgRo = sucOrgSvc.add(orgMo);
-		_log.info("添加伙伴添加组织信息的返回值为：{}", orgRo);
-		if (orgRo.getResult() != 1) {
-			_log.info("添加伙伴添加组织信息出错，操作人id为：{}", mo.getOpId());
-			throw new RuntimeException("操作出错");
+		if (!sucOrgSvc.existByName(mo.getPartnerName())) {
+			SucOrgMo orgMo = new SucOrgMo();
+			orgMo.setId(orgId);
+			orgMo.setName(mo.getPartnerName());
+			orgMo.setIsEnabled(false);
+			orgMo.setRemark(mo.getRemark());
+			orgMo.setCreateTimestamp(System.currentTimeMillis());
+			_log.info("添加伙伴添加组织信息的参数为：{}", orgMo);
+			SucOrgRo orgRo = sucOrgSvc.add(orgMo);
+			_log.info("添加伙伴添加组织信息的返回值为：{}", orgRo);
+			if (orgRo.getResult() != 1) {
+				_log.info("添加伙伴添加组织信息出错，操作人id为：{}", mo.getOpId());
+				throw new RuntimeException("操作出错");
+			}
 		}
+		
 		_log.info("添加伙伴成功，操作人id为：{}", mo.getOpId());
 		ro.setResult(ResultDic.SUCCESS);
 		ro.setMsg("操作成功");
@@ -157,6 +169,7 @@ public class PrmPartnerSvcImpl extends MybatisBaseSvcImpl<PrmPartnerMo, java.lan
 
 	/**
 	 * 修改伙伴信息
+	 * 
 	 * @param mo
 	 * @return
 	 */
@@ -188,7 +201,7 @@ public class PrmPartnerSvcImpl extends MybatisBaseSvcImpl<PrmPartnerMo, java.lan
 			ro.setMsg("操作错误");
 			return ro;
 		}
-		
+
 		SucOrgMo orgMo = new SucOrgMo();
 		orgMo.setId(mo.getOrgId());
 		orgMo.setName(mo.getPartnerName());
