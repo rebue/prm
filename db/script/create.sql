@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2018/10/26 15:00:09                          */
+/* Created on:     2018/11/5 16:02:12                           */
 /*==============================================================*/
 
 
@@ -16,7 +16,6 @@ create table PRM_PARTNER
    COMPANY_ADDRESS      varchar(120) comment '公司地址',
    CONTACT              varchar(50) not null comment '联系方式',
    ORG_ID               bigint not null comment '组织ID',
-   PARTNER_TYPE         tinyint not null comment '伙伴类型',
    IS_ENABLED           bool not null default true comment '是否启用',
    SALESMAN_ID          bigint comment '业务员ID',
    REMARK               varchar(300) comment '备注',
