@@ -63,15 +63,6 @@ public class PrmPartnerMo implements Serializable {
     private Long orgId;
 
     /**
-     *    伙伴类型
-     *
-     *    数据库字段: PRM_PARTNER.PARTNER_TYPE
-     *
-     *    @mbg.generated 自动生成，如需修改，请删除本行
-     */
-    private Byte partnerType;
-
-    /**
      *    是否启用
      *
      *    数据库字段: PRM_PARTNER.IS_ENABLED
@@ -245,28 +236,6 @@ public class PrmPartnerMo implements Serializable {
     }
 
     /**
-     *    伙伴类型
-     *
-     *    数据库字段: PRM_PARTNER.PARTNER_TYPE
-     *
-     *    @mbg.generated 自动生成，如需修改，请删除本行
-     */
-    public Byte getPartnerType() {
-        return partnerType;
-    }
-
-    /**
-     *    伙伴类型
-     *
-     *    数据库字段: PRM_PARTNER.PARTNER_TYPE
-     *
-     *    @mbg.generated 自动生成，如需修改，请删除本行
-     */
-    public void setPartnerType(Byte partnerType) {
-        this.partnerType = partnerType;
-    }
-
-    /**
      *    是否启用
      *
      *    数据库字段: PRM_PARTNER.IS_ENABLED
@@ -412,7 +381,6 @@ public class PrmPartnerMo implements Serializable {
         sb.append(", companyAddress=").append(companyAddress);
         sb.append(", contact=").append(contact);
         sb.append(", orgId=").append(orgId);
-        sb.append(", partnerType=").append(partnerType);
         sb.append(", isEnabled=").append(isEnabled);
         sb.append(", salesmanId=").append(salesmanId);
         sb.append(", remark=").append(remark);

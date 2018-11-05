@@ -4,7 +4,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-
 import rebue.prm.mo.PrmPartnerMo;
 import rebue.robotech.mapper.MybatisBaseMapper;
 
@@ -65,7 +64,7 @@ public interface PrmPartnerMapper extends MybatisBaseMapper<PrmPartnerMo, Long> 
      *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     int countSelective(PrmPartnerMo record);
-    
+
     /**
      * 根据伙伴名称判断该伙伴是否已存在
      * @param partnerName

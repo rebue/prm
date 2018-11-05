@@ -65,7 +65,6 @@ public class PrmPartnerTest {
 //		mo.setIsEnabled(true);
 		mo.setPartnerName("asdfsadf");
 //		mo.setRemark("sadfdsafsdaf");
-		mo.setPartnerType((byte) 1);
 
 		System.out.println(OkhttpUtils.postByJsonParams(url, mo));
 

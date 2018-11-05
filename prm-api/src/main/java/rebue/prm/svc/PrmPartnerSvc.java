@@ -11,24 +11,24 @@ import rebue.robotech.svc.MybatisBaseSvc;
  */
 public interface PrmPartnerSvc extends MybatisBaseSvc<PrmPartnerMo, java.lang.Long> {
 
-	/**
-	 * 添加伙伴
-	 * @param mo
-	 * @return
-	 */
-	Ro addEx(PrmPartnerMo mo);
+    /**
+     *  添加伙伴
+     *  @param mo
+     *  @return
+     */
+    Ro addEx(PrmPartnerMo mo);
 
-	/**
-	 * 禁用或者启用伙伴
-	 * @param mo
-	 * @return
-	 */
-	Ro enable(PrmPartnerMo mo);
+    /**
+     *  禁用或者启用伙伴
+     *  @param mo
+     *  @return
+     */
+    Ro enable(PrmPartnerMo mo);
 
-	/**
-	 * 修改伙伴信息
-	 * @param mo
-	 * @return
-	 */
-	Ro modifyEx(PrmPartnerMo mo);
+    /**
+     *  修改伙伴信息
+     *  @param mo
+     *  @return
+     */
+    Ro modifyEx(PrmPartnerMo mo);
 }
