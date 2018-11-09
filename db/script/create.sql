@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2018/11/5 16:02:12                           */
+/* Created on:     2018/11/9 10:48:49                           */
 /*==============================================================*/
 
 
@@ -20,6 +20,7 @@ create table PRM_PARTNER
    SALESMAN_ID          bigint comment '业务员ID',
    REMARK               varchar(300) comment '备注',
    OP_ID                bigint not null comment '操作人ID',
+   OP_ORG_ID            bigint not null comment '操作组织',
    CREATE_TIME          datetime not null comment '创建时间',
    MODIFY_TIME          datetime not null comment '修改时间',
    primary key (ID)
