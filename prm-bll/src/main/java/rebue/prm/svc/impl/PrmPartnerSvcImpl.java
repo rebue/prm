@@ -60,7 +60,7 @@ public class PrmPartnerSvcImpl extends MybatisBaseSvcImpl<PrmPartnerMo, java.lan
 
     @Resource
     private SucOrgSvc sucOrgSvc;
-
+    
     /**
      *  添加伙伴
      *
@@ -84,6 +84,7 @@ public class PrmPartnerSvcImpl extends MybatisBaseSvcImpl<PrmPartnerMo, java.lan
             ro.setMsg("该伙伴已存在");
             return ro;
         }
+        
         Long orgId = _idWorker.getId();
         mo.setId(_idWorker.getId());
         mo.setOrgId(orgId);

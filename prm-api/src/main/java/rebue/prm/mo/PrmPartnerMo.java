@@ -121,6 +121,15 @@ public class PrmPartnerMo implements Serializable {
     private Date modifyTime;
 
     /**
+     *    操作组织
+     *
+     *    数据库字段: PRM_PARTNER.OP_ORG_ID
+     *
+     *    @mbg.generated 自动生成，如需修改，请删除本行
+     */
+    private Long opOrgId;
+
+    /**
      *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private static final long serialVersionUID = 1L;
@@ -368,6 +377,28 @@ public class PrmPartnerMo implements Serializable {
     }
 
     /**
+     *    操作组织
+     *
+     *    数据库字段: PRM_PARTNER.OP_ORG_ID
+     *
+     *    @mbg.generated 自动生成，如需修改，请删除本行
+     */
+    public Long getOpOrgId() {
+        return opOrgId;
+    }
+
+    /**
+     *    操作组织
+     *
+     *    数据库字段: PRM_PARTNER.OP_ORG_ID
+     *
+     *    @mbg.generated 自动生成，如需修改，请删除本行
+     */
+    public void setOpOrgId(Long opOrgId) {
+        this.opOrgId = opOrgId;
+    }
+
+    /**
      *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     @Override
@@ -387,6 +418,7 @@ public class PrmPartnerMo implements Serializable {
         sb.append(", opId=").append(opId);
         sb.append(", createTime=").append(createTime);
         sb.append(", modifyTime=").append(modifyTime);
+        sb.append(", opOrgId=").append(opOrgId);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
