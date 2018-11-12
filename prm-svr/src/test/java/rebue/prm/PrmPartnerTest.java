@@ -11,8 +11,8 @@ import rebue.wheel.OkhttpUtils;
 
 public class PrmPartnerTest {
 
-//	private String hostUrl = "http://127.0.0.1:20110/prm/partner";
-	private String hostUrl = "http://192.168.1.40:20110/prm/partner";
+	private String hostUrl = "http://127.0.0.1:20110/prm/partner";
+//	private String hostUrl = "http://192.168.1.40:20110/prm/partner";
 
 //	private String hostUrl = "http://192.168.1.201/prm-svr/prm/sys";
 

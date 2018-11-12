@@ -70,6 +70,6 @@ public interface PrmPartnerMapper extends MybatisBaseMapper<PrmPartnerMo, Long> 
      * @param partnerName
      * @return
      */
-    @Select("select count(*) from PRM_PARTNER where PARTNER_NAME = '${partnerName}'")
-    int existByPartnerName(@Param("partnerName") String partnerName);
+    @Select("select count(*) from PRM_PARTNER where PARTNER_NAME = '${partnerName}' and OP_ORG_ID = #{opOrgId,jdbcType=BIGINT}")
+    int existByPartnerName(@Param("partnerName") String partnerName, @Param("opOrgId") Long opOrgId);
 }

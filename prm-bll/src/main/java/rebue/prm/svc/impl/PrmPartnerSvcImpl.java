@@ -78,15 +78,25 @@ public class PrmPartnerSvcImpl extends MybatisBaseSvcImpl<PrmPartnerMo, java.lan
             ro.setMsg("参数错误");
             return ro;
         }
-        if (_mapper.existByPartnerName(mo.getPartnerName()) != 0) {
+        
+        if (_mapper.existByPartnerName(mo.getPartnerName(), mo.getOpOrgId()) != 0) {
             _log.error("添加伙伴时发现该伙伴已存在，操作人id为：{}", mo.getOpId());
             ro.setResult(ResultDic.FAIL);
             ro.setMsg("该伙伴已存在");
             return ro;
         }
+
+        _log.info("添加伙伴查询组织信息的参数为：{}", mo.getPartnerName());
+        SucOrgMo sucOrgMo = sucOrgSvc.getOne(mo.getPartnerName());
+        _log.info("添加伙伴查询组织信息的返回值为：{}", sucOrgMo);
         
         Long orgId = _idWorker.getId();
-        mo.setId(_idWorker.getId());
+        if (sucOrgMo != null) {
+        	orgId = sucOrgMo.getId();
+		}
+        
+        Long partnerId = _idWorker.getId();
+        mo.setId(partnerId);
         mo.setOrgId(orgId);
         mo.setIsEnabled(true);
         mo.setCreateTime(new Date());

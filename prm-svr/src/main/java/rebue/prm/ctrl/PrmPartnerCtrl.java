@@ -143,6 +143,7 @@ public class PrmPartnerCtrl {
 		_log.info("add PrmPartnerMo: {}", mo);
 		// 获取当前登录用户id
 		Long loginId = JwtUtils.getJwtUserIdInCookie(request);
+//		Long loginId = 520874560590053376L;
 		mo.setOpId(loginId);
 		Ro ro = new Ro();
 		
@@ -154,6 +155,7 @@ public class PrmPartnerCtrl {
 		
 		Map<String, Object> map = JwtUtils.getJwtAdditionInCookie(req);
 		String orgId = String.valueOf(map.get("orgId"));
+//		String orgId = "520874560590053376";
 		if (orgId == null || orgId.equals("") || orgId.equals("null")) {
 			ro.setResult(ResultDic.FAIL);
 			ro.setMsg("您没有加入任何组织，请加入组织后再试。。。");
