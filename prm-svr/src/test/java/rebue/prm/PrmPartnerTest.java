@@ -12,7 +12,7 @@ import rebue.wheel.OkhttpUtils;
 public class PrmPartnerTest {
 
 //	private String hostUrl = "http://127.0.0.1:20110/prm/partner";
-	private String hostUrl = "http://192.168.1.37:20110/prm/partner";
+	private String hostUrl = "http://192.168.1.40:20110/prm/partner";
 
 //	private String hostUrl = "http://192.168.1.201/prm-svr/prm/sys";
 
@@ -21,7 +21,7 @@ public class PrmPartnerTest {
 	 * 
 	 * @throws IOException
 	 */
-	@Test
+//	@Test
 	public void getById() throws IOException {
 		String id = "1";
 		String url = hostUrl + "/getbyid";
@@ -63,7 +63,7 @@ public class PrmPartnerTest {
 //		mo.setCreateTime(new Date());
 //		mo.setId(1L);
 //		mo.setIsEnabled(true);
-		mo.setPartnerName("asdfsadf");
+		mo.setPartnerName("测试伙伴");
 //		mo.setRemark("sadfdsafsdaf");
 
 		System.out.println(OkhttpUtils.postByJsonParams(url, mo));
