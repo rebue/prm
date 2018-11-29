@@ -17,4 +17,10 @@ public interface PrmPartnerSvr {
 	 */
 	@GetMapping("/prm/partner/getbyid")
 	PrmPartnerMo getById(@RequestParam("id") java.lang.Long id);
+	
+	/**
+	 * 获取单个伙伴信息(根据条件)
+	 */
+	@GetMapping("/prm/partner/getone")
+	PrmPartnerMo getOne(PrmPartnerMo mo);
 }

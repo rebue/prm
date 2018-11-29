@@ -107,6 +107,15 @@ public class PrmPartnerCtrl {
 		_log.info("get PrmPartnerMo by id: " + id);
 		return svc.getById(id);
 	}
+	
+	/**
+	 * 获取单个伙伴信息(根据条件)
+	 */
+	@GetMapping("/prm/partner/getone")
+	PrmPartnerMo getOne(PrmPartnerMo mo) {
+		_log.info("getone PrmPartnerMo mo: " + mo);
+		return svc.getOne(mo);
+	}
 
 	/**
 	 * 修改伙伴信息
