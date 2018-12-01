@@ -19,8 +19,8 @@ public interface PrmPartnerSvr {
 	PrmPartnerMo getById(@RequestParam("id") java.lang.Long id);
 	
 	/**
-	 * 获取单个伙伴信息(根据条件)
+	 * 获取单个伙伴信息(根据组织id) 
 	 */
-	@GetMapping("/prm/partner/getone")
-	PrmPartnerMo getOne(PrmPartnerMo mo);
+	@GetMapping("/prm/partner/getOneByOrgId")
+	PrmPartnerMo getOneByOrgId(@RequestParam("orgId") java.lang.Long orgId);
 }

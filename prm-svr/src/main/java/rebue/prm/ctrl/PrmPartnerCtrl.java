@@ -28,7 +28,7 @@ import rebue.wheel.turing.JwtUtils;
  * 伙伴信息
  *
  * @mbg.generated 自动生成的注释，如需修改本注释，请删除本行
- */
+ */ 
 @RestController
 public class PrmPartnerCtrl {
 
@@ -109,10 +109,12 @@ public class PrmPartnerCtrl {
 	}
 	
 	/**
-	 * 获取单个伙伴信息(根据条件)
+	 * 获取单个伙伴信息(根据组织id)
 	 */
-	@GetMapping("/prm/partner/getone")
-	PrmPartnerMo getOne(PrmPartnerMo mo) {
+	@GetMapping("/prm/partner/getOneByOrgId")
+	PrmPartnerMo getOneByOrgId(@RequestParam("orgId") java.lang.Long orgId) {
+		PrmPartnerMo mo  =  new PrmPartnerMo();
+		mo.setOrgId(orgId);
 		_log.info("getone PrmPartnerMo mo: " + mo);
 		return svc.getOne(mo);
 	}
