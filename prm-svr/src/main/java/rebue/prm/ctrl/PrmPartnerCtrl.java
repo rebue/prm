@@ -11,6 +11,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,6 +43,9 @@ public class PrmPartnerCtrl {
 	 */
 	@Resource
 	private PrmPartnerSvc svc;
+	
+	@Value("${debug:false}")
+	private Boolean isDebug;
 
 	/**
 	 * 删除伙伴信息
@@ -83,10 +87,11 @@ public class PrmPartnerCtrl {
 		if (pageSize == null)
 			pageSize = 5;
 		_log.info("list PrmPartnerMo:" + mo + ", pageNum = " + pageNum + ", pageSize = " + pageSize);
-		Map<String, Object> map = JwtUtils.getJwtAdditionInCookie(req);
-		String orgId = String.valueOf(map.get("orgId"));
-//		String orgId = String.valueOf("520874560590053376");
-		mo.setOpOrgId(Long.parseLong(orgId));
+		Long orgId = 520874560590053376L;
+		if (!isDebug) {
+			orgId = (Long) JwtUtils.getJwtAdditionItemInCookie(req, "orgId");
+		}
+		mo.setOpOrgId(orgId);
 		if (pageSize > 50) {
 			String msg = "pageSize不能大于50";
 			_log.error(msg);
@@ -125,7 +130,10 @@ public class PrmPartnerCtrl {
 	@PutMapping("/prm/partner")
 	Ro modify(@RequestBody PrmPartnerMo mo, HttpServletRequest request) throws Exception {
 		_log.info("modify PrmPartnerMo: {}", mo);
-		Long loginId = JwtUtils.getJwtUserIdInCookie(request);
+		Long loginId = 520469568947224576L;
+		if (!isDebug) {
+			loginId = JwtUtils.getJwtUserIdInCookie(request);
+		}
 		mo.setOpId(loginId);
 		mo.setModifyTime(new Date());
 		try {
@@ -153,8 +161,12 @@ public class PrmPartnerCtrl {
 	Ro add(@RequestBody PrmPartnerMo mo, HttpServletRequest request, HttpServletRequest req) throws Exception {
 		_log.info("add PrmPartnerMo: {}", mo);
 		// 获取当前登录用户id
-		Long loginId = JwtUtils.getJwtUserIdInCookie(request);
-//		Long loginId = 520874560590053376L;
+		Long loginId = 520874560590053376L;
+		Long orgId = 520874560590053376L;
+		if (!isDebug) {
+			loginId = JwtUtils.getJwtUserIdInCookie(request);
+			orgId = (Long) JwtUtils.getJwtAdditionItemInCookie(req, "orgId");
+		}
 		mo.setOpId(loginId);
 		Ro ro = new Ro();
 		
@@ -164,15 +176,12 @@ public class PrmPartnerCtrl {
 			return ro;
 		}
 		
-		Map<String, Object> map = JwtUtils.getJwtAdditionInCookie(req);
-		String orgId = String.valueOf(map.get("orgId"));
-//		String orgId = "520874560590053376";
 		if (orgId == null || orgId.equals("") || orgId.equals("null")) {
 			ro.setResult(ResultDic.FAIL);
 			ro.setMsg("您没有加入任何组织，请加入组织后再试。。。");
 			return ro;
 		}
-		mo.setOpOrgId(Long.parseLong(orgId));
+		mo.setOpOrgId(orgId);
 		try {
 			return svc.addEx(mo);
 		} catch (RuntimeException e) {
@@ -201,7 +210,10 @@ public class PrmPartnerCtrl {
 			@RequestParam("orgId") Long orgId, HttpServletRequest request)
 			throws NumberFormatException, ParseException {
 		// 获取当前登录用户id
-		Long loginId = JwtUtils.getJwtUserIdInCookie(request);
+		Long loginId = 520469568947224576L;
+		if (!isDebug) {
+			loginId = JwtUtils.getJwtUserIdInCookie(request);
+		}
 		PrmPartnerMo mo = new PrmPartnerMo();
 		mo.setId(id);
 		mo.setOrgId(orgId);
